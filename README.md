@@ -91,19 +91,17 @@
 </div>
 
 ---
-
 ## 📊 GitHub Stats
 
 <div align="center">
 
-![GitHub Stats](https://github-readme-stats-gamma-tan-68.vercel.app/api?username=OmarJebbari&show_icons=true&hide_border=true&title_color=e11d48&icon_color=e11d48&text_color=ffffff&bg_color=0d1117)
+![GitHub Stats](https://github-stats-extended.vercel.app/api?username=OmarJebbari&show_icons=true&hide_border=true&title_color=e11d48&icon_color=e11d48&text_color=ffffff&bg_color=0d1117)
 
 ![GitHub Streak](https://streak-stats.demolab.com?user=OmarJebbari&hide_border=true&ring=e11d48&fire=e11d48&currStreakLabel=e11d48&sideLabels=ffffff&dates=ffffff&background=0D1117&stroke=e11d48&currStreakNum=ffffff&sideNums=ffffff)
 
-![Top Languages](https://github-readme-stats-gamma-tan-68.vercel.app/api/top-langs/?username=OmarJebbari&hide_border=true&title_color=e11d48&text_color=ffffff&bg_color=0d1117&layout=compact&langs_count=8)
+![Top Languages](https://github-stats-extended.vercel.app/api/top-langs/?username=OmarJebbari&hide_border=true&title_color=e11d48&text_color=ffffff&bg_color=0d1117&layout=compact&langs_count=8)
 
 </div>
-
 ---
 
 ## 🤝 Connect With Me
