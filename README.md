@@ -91,7 +91,6 @@
 </div>
 
 ---
-## 📊 GitHub Stats
 
 ## 📊 GitHub Stats
 
@@ -101,9 +100,6 @@
 
 ![GitHub Streak](https://github-readme-streak-stats-eight.vercel.app?user=OmarJebbari&hide_border=true&ring=e11d48&fire=e11d48&currStreakLabel=e11d48&sideLabels=ffffff&dates=ffffff&background=0D1117&stroke=e11d48&currStreakNum=ffffff&sideNums=ffffff)
 
-![Top Languages](https://github-stats-extended.vercel.app/api/top-langs/?username=OmarJebbari&hide_border=true&title_color=e11d48&text_color=ffffff&bg_color=0d1117&layout=compact&langs_count=8)
-
-</div>
 ---
 
 ## 🤝 Connect With Me
