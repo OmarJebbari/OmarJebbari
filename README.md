@@ -21,7 +21,7 @@
 |:---|:---|
 | 🎓 **Role** | Big Data and AI Engineering Student |
 | 📍 **Location** | Morocco |
-| 🔭 **Focus** | Machine Learning · Data Engineering · Applied AI |
+| 🔭 **Focus** | Machine Learning · Data Engineering · AI Engineering · Applied AI |
 | 💻 **Languages** | Python · SQL · JavaScript · C · Bash |
 | 🚀 **Currently** | Building ML pipelines and exploring LLMs |
 | 📧 **Email** | jebbariomar1@gmail.com |
