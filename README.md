@@ -36,11 +36,11 @@
 
 <div align="center">
 
-| 🤖 Machine Learning | 🏗️ Data Engineering | 📊 Analytics |
-|:---:|:---:|:---:|
-| Model training and evaluation | ETL pipelines and workflows | Statistical analysis |
-| PyTorch · TensorFlow · Scikit-learn | Apache Spark · SQL · Docker | Pandas · Matplotlib · Power BI |
-| Classification · Regression · Clustering | MongoDB · PostgreSQL · MySQL | Data visualization and reporting |
+| 🤖 Machine Learning | 🏗️ Data Engineering | 📊 Analytics | 🧠 AI Engineering |
+|:---:|:---:|:---:|:---:|
+| Model training and evaluation | ETL pipelines and workflows | Statistical analysis | AI Agents · RAG · LLMs |
+| PyTorch · TensorFlow · Scikit-learn | Apache Spark · SQL · Docker | Pandas · Matplotlib · Power BI | VLMs · Computer Vision |
+| Classification · Regression · Clustering | MongoDB · PostgreSQL · MySQL | Data visualization and reporting | LangChain · Qdrant · Chroma |
 
 </div>
 
