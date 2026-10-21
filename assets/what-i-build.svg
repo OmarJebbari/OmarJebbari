@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="560" viewBox="0 0 980 560" role="img" aria-label="What I build — AI &amp; Agentic Systems, Data &amp; ML Engineering, Full-Stack &amp; Applied AI">
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#161b22"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="iconGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#21262d"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="titleLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00FF9D"/>
+      <stop offset="45%" stop-color="#38bdf8"/>
+      <stop offset="80%" stop-color="#ffa657"/>
+      <stop offset="100%" stop-color="#30363d"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Section header -->
+  <text x="0" y="28" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#e6edf3">What I Build</text>
+  <rect x="0" y="44" width="980" height="2" rx="1" fill="url(#titleLine)"/>
+
+  <!-- ========== CARD 01 : AI & Agentic Systems ========== -->
+  <rect x="0" y="72" width="308" height="468" rx="14" fill="url(#panel)" stroke="#30363d" stroke-width="1.5"/>
+  <text x="276" y="122" text-anchor="end" font-family="Consolas, Fira Code, Menlo, monospace" font-size="40" font-weight="700" fill="#21262d">01</text>
+
+  <!-- Icon 01: Brain / Neural Network -->
+  <rect x="24" y="96" width="42" height="42" rx="10" fill="url(#iconGrad)" stroke="#00FF9D" stroke-width="1.4"/>
+  <circle cx="37" cy="117" r="4" fill="none" stroke="#00FF9D" stroke-width="1.5"/>
+  <circle cx="53" cy="117" r="4" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+  <circle cx="45" cy="107" r="4" fill="none" stroke="#00FF9D" stroke-width="1.5"/>
+  <line x1="39" y1="114" x2="43" y2="109" stroke="#00FF9D" stroke-width="1.2"/>
+  <line x1="51" y1="114" x2="47" y2="109" stroke="#38bdf8" stroke-width="1.2"/>
+  <line x1="41" y1="117" x2="49" y2="117" stroke="#00FF9D" stroke-width="1.2"/>
+
+  <text x="24" y="178" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#e6edf3">AI &amp; Agentic Systems</text>
+  <text x="24" y="204" font-family="Consolas, Fira Code, Menlo, monospace" font-size="11" font-weight="700" letter-spacing="1.8" fill="#00FF9D">AGENTIC &amp; MULTIMODAL</text>
+  <text x="24" y="236" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#8b949e">I fine-tune vision models, build multimodal</text>
+  <text x="24" y="256" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#8b949e">RAG pipelines, and architect autonomous</text>
+  <text x="24" y="276" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#8b949e">AI agents.</text>
+
+  <line x1="24" y1="298" x2="284" y2="298" stroke="#30363d" stroke-width="1"/>
+  <text x="24" y="326" font-family="Consolas, Fira Code, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="2" fill="#616b7f">TECHNOLOGIES</text>
+
+  <g font-family="Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#c9d1d9">
+    <rect x="24" y="342" width="140" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="94" y="360" text-anchor="middle">VLMs &amp; QLoRA</text>
+    <rect x="172" y="342" width="112" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="228" y="360" text-anchor="middle">LangChain</text>
+
+    <rect x="24" y="380" width="130" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="89" y="398" text-anchor="middle">Multimodal RAG</text>
+    <rect x="162" y="380" width="122" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="223" y="398" text-anchor="middle">SigLIP / BGE-M3</text>
+
+    <rect x="24" y="418" width="144" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="96" y="436" text-anchor="middle">Qdrant / Chroma</text>
+    <rect x="176" y="418" width="108" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="230" y="436" text-anchor="middle">Agentic AI</text>
+
+    <rect x="24" y="456" width="128" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="88" y="474" text-anchor="middle">Vector Embeddings</text>
+    <rect x="160" y="456" width="124" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="222" y="474" text-anchor="middle">Prompt Systems</text>
+  </g>
+
+  <!-- ========== CARD 02 : Data & ML Engineering ========== -->
+  <rect x="336" y="72" width="308" height="468" rx="14" fill="url(#panel)" stroke="#30363d" stroke-width="1.5"/>
+  <text x="612" y="122" text-anchor="end" font-family="Consolas, Fira Code, Menlo, monospace" font-size="40" font-weight="700" fill="#21262d">02</text>
+
+  <!-- Icon 02: Database / Pipeline -->
+  <rect x="360" y="96" width="42" height="42" rx="10" fill="url(#iconGrad)" stroke="#ffa657" stroke-width="1.4"/>
+  <ellipse cx="381" cy="108" rx="9" ry="3.5" fill="none" stroke="#ffa657" stroke-width="1.5"/>
+  <path d="M372 108 v11 c0 2 4 3.5 9 3.5 s9-1.5 9-3.5 V108" fill="none" stroke="#ffa657" stroke-width="1.5"/>
+  <path d="M372 115.5 c0 2 4 3.5 9 3.5 s9-1.5 9-3.5" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+
+  <text x="360" y="178" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#e6edf3">Data &amp; ML Engineering</text>
+  <text x="360" y="204" font-family="Consolas, Fira Code, Menlo, monospace" font-size="11" font-weight="700" letter-spacing="1.8" fill="#ffa657">BIG DATA INTELLIGENCE</text>
+  <text x="360" y="236" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#8b949e">I design robust ETL workflows, big data</text>
+  <text x="360" y="256" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#8b949e">pipelines, and scalable machine learning</text>
+  <text x="360" y="276" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#8b949e">training systems.</text>
+
+  <line x1="360" y1="298" x2="620" y2="298" stroke="#30363d" stroke-width="1"/>
+  <text x="360" y="326" font-family="Consolas, Fira Code, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="2" fill="#616b7f">TECHNOLOGIES</text>
+
+  <g font-family="Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#c9d1d9">
+    <rect x="360" y="342" width="138" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="429" y="360" text-anchor="middle">PyTorch &amp; TF</text>
+    <rect x="506" y="342" width="114" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="563" y="360" text-anchor="middle">Apache Spark</text>
+
+    <rect x="360" y="380" width="134" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="427" y="398" text-anchor="middle">ETL &amp; Pipelines</text>
+    <rect x="502" y="380" width="118" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="561" y="398" text-anchor="middle">scikit-learn</text>
+
+    <rect x="360" y="418" width="120" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="420" y="436" text-anchor="middle">PostgreSQL / SQL</text>
+    <rect x="488" y="418" width="132" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="554" y="436" text-anchor="middle">MongoDB / Docker</text>
+
+    <rect x="360" y="456" width="122" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="421" y="474" text-anchor="middle">Pandas &amp; NumPy</text>
+    <rect x="490" y="456" width="130" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="555" y="474" text-anchor="middle">Power BI Analytics</text>
+  </g>
+
+  <!-- ========== CARD 03 : Full-Stack & Applied AI ========== -->
+  <rect x="672" y="72" width="308" height="468" rx="14" fill="url(#panel)" stroke="#30363d" stroke-width="1.5"/>
+  <text x="948" y="122" text-anchor="end" font-family="Consolas, Fira Code, Menlo, monospace" font-size="40" font-weight="700" fill="#21262d">03</text>
+
+  <!-- Icon 03: Code Brackets </> -->
+  <rect x="696" y="96" width="42" height="42" rx="10" fill="url(#iconGrad)" stroke="#38bdf8" stroke-width="1.4"/>
+  <text x="717" y="123" text-anchor="middle" font-family="Consolas, Fira Code, Menlo, monospace" font-size="14" font-weight="700" fill="#38bdf8">&lt;/&gt;</text>
+
+  <text x="696" y="178" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#e6edf3">Full-Stack &amp; Applied AI</text>
+  <text x="696" y="204" font-family="Consolas, Fira Code, Menlo, monospace" font-size="11" font-weight="700" letter-spacing="1.8" fill="#38bdf8">END-TO-END SOLUTIONS</text>
+  <text x="696" y="236" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#8b949e">I develop interactive web applications and</text>
+  <text x="696" y="256" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#8b949e">intelligent developer tools with modern</text>
+  <text x="696" y="276" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#8b949e">frameworks and clean code.</text>
+
+  <line x1="696" y1="298" x2="956" y2="298" stroke="#30363d" stroke-width="1"/>
+  <text x="696" y="326" font-family="Consolas, Fira Code, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="2" fill="#616b7f">TECHNOLOGIES</text>
+
+  <g font-family="Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#c9d1d9">
+    <rect x="696" y="342" width="134" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="763" y="360" text-anchor="middle">React &amp; Next.js</text>
+    <rect x="838" y="342" width="118" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="897" y="360" text-anchor="middle">Node.js APIs</text>
+
+    <rect x="696" y="380" width="116" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="754" y="398" text-anchor="middle">TypeScript / JS</text>
+    <rect x="820" y="380" width="136" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="888" y="398" text-anchor="middle">FastAPI / Python</text>
+
+    <rect x="696" y="418" width="128" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="760" y="436" text-anchor="middle">Tailwind &amp; CSS</text>
+    <rect x="832" y="418" width="124" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="894" y="436" text-anchor="middle">Linux &amp; Bash</text>
+
+    <rect x="696" y="456" width="120" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="756" y="474" text-anchor="middle">Docker / CI/CD</text>
+    <rect x="824" y="456" width="132" height="28" rx="8" fill="#0d1117" stroke="#30363d"/>
+    <text x="890" y="474" text-anchor="middle">Git / Production</text>
+  </g>
+</svg>
