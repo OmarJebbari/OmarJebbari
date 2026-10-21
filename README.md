@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/whoami-card.svg" alt="omar@ensa-tetouan ~ whoami" width="880"/>
+<img src="https://raw.githubusercontent.com/OmarJebbari/OmarJebbari/main/whoami-card.png" alt="Omar Jebbari - AI Engineer Profile" width="100%"/>
 
 <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3000&pause=900&color=E11D48&center=true&vCenter=true&width=720&lines=Big+Data+%26+AI+Engineering+student;Building+RAG+%26+multimodal+pipelines;Fine-tuning+VLMs+with+QLoRA;Turning+raw+data+into+real+intelligence" alt="Typing SVG"/></a>
 
