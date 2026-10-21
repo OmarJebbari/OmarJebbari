@@ -27,7 +27,7 @@
 <div align="center">
 
 <p><b>Languages &amp; Core</b></p>
-<img src="https://skillicons.dev/icons?i=py,sql,c,bash,js,ts&theme=dark" />
+<img src="https://skillicons.dev/icons?i=py,c,bash,js,ts&theme=dark" />
 <br/><br/>
 
 <p><b>AI, Machine Learning &amp; Agents</b></p>
@@ -41,9 +41,13 @@
 <br/><br/>
 
 <p><b>Big Data &amp; Data Engineering</b></p>
-<img src="https://skillicons.dev/icons?i=pandas,numpy,spark,powerbi&theme=dark" />
+<img src="https://skillicons.dev/icons?i=kafka,docker,linux,py&theme=dark" />
 &nbsp;
 <img height="48" src="https://cdn.simpleicons.org/apachespark/E25A1C" alt="Apache Spark"/>
+&nbsp;
+<img height="48" src="https://cdn.simpleicons.org/pandas/150458/white" alt="Pandas"/>
+&nbsp;
+<img height="48" src="https://cdn.simpleicons.org/numpy/4DABCF" alt="NumPy"/>
 <br/><br/>
 
 <p><b>Databases &amp; Storage</b></p>
