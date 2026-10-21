@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OmarJebbari · AI Engineer</title>
+  <meta name="description"
+    content="Omar Jebbari — Big Data & AI Engineering student. Building RAG & multimodal pipelines, fine-tuning VLMs with QLoRA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #060a0f;
+      --bg-term: #0d1117;
+      --bg-card: #0f1923;
+      --border: #1e2d40;
+      --green: #00ff88;
+      --green-dim: #00cc6a;
+      --green-mut: #0d2e1d;
+      --red: #e11d48;
+      --cyan: #22d3ee;
+      --yellow: #fbbf24;
+      --white: #e2e8f0;
+      --grey: #64748b;
+      --grey-l: #94a3b8;
+      --mono: 'Fira Code', monospace;
+      --radius: 8px;
+      --glow-g: 0 0 24px #00ff8840, 0 0 60px #00ff8808;
+      --glow-r: 0 0 24px #e11d4840, 0 0 60px #e11d4808;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--mono);
+      min-height: 100vh;
+      overflow-x: hidden
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, .05) 2px, rgba(0, 0, 0, .05) 4px);
+      pointer-events: none;
+      z-index: 999
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-term)
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--green-dim);
+      border-radius: 3px
+    }
+
+    /* ── SECTION SYSTEM ── */
+    .section {
+      display: none;
+      min-height: 100vh;
+      animation: fadeIn .45s ease
+    }
+
+    .section.active {
+      display: block
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    /* ── BACK BUTTON ── */
+    #backBtn {
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      z-index: 200;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--green);
+      font-family: var(--mono);
+      font-size: 13px;
+      padding: 8px 18px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+
+    #backBtn:hover {
+      border-color: var(--green);
+      background: var(--green-mut);
+      box-shadow: var(--glow-g);
+      transform: translateX(-2px)
+    }
+
+    #backBtn.visible {
+      display: flex
+    }
+
+    /* ── NAV DOTS ── */
+    .nav-dots {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      gap: 14px
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      cursor: pointer;
+      transition: all .3s ease;
+      position: relative
+    }
+
+    .dot.active {
+      background: var(--green);
+      box-shadow: var(--glow-g);
+      transform: scale(1.5)
+    }
+
+    .dot:hover {
+      background: var(--green-dim);
+      transform: scale(1.3)
+    }
+
+    .dot::after {
+      content: attr(data-label);
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--green);
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity .2s;
+      pointer-events: none
+    }
+
+    .dot:hover::after {
+      opacity: 1
+    }
+
+    /* ── TERMINAL BAR ── */
+    .tbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #12192a;
+      border-bottom: 1px solid var(--border);
+      padding: 11px 20px
+    }
+
+    .tdots span {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 5px
+    }
+
+    .dr {
+      background: #ff5f56
+    }
+
+    .dy {
+      background: #ffbd2e
+    }
+
+    .dg {
+      background: #27c93f
+    }
+
+    .ttitle {
+      flex: 1;
+      text-align: center;
+      color: var(--grey);
+      font-size: 12px
+    }
+
+    /* ── SECTION 1: WHOAMI ── */
+    .wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 36px 24px 56px
+    }
+
+    .cmd-line {
+      font-size: 14px;
+      color: var(--grey-l);
+      margin-bottom: 18px
+    }
+
+    .cmd-line .u {
+      color: var(--green)
+    }
+
+    .cmd-line .h {
+      color: var(--cyan)
+    }
+
+    .whoami-card {
+      background: var(--bg-term);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 80px rgba(0, 255, 136, .05), 0 20px 60px rgba(0, 0, 0, .6);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 520px
+    }
+
+    /* Left panel */
+    .card-l {
+      padding: 36px 36px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      border-right: 1px solid var(--border)
+    }
+
+    .name-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 4px
+    }
+
+    .arrow {
+      color: var(--green);
+      font-size: 20px;
+      font-weight: 700
+    }
+
+    h1.name {
+      font-size: clamp(24px, 3.5vw, 40px);
+      font-weight: 700;
+      color: var(--green);
+      letter-spacing: 2px;
+      text-shadow: var(--glow-g);
+      text-transform: uppercase
+    }
+
+    .title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+      margin-left: 32px;
+      margin-bottom: 2px
+    }
+
+    .tagline {
+      font-size: 12px;
+      color: var(--grey-l);
+      margin-left: 32px;
+      margin-bottom: 2px
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 9px;
+      height: 15px;
+      background: var(--green);
+      margin-left: 32px;
+      animation: blink 1s step-end infinite;
+      vertical-align: middle
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0
+      }
+    }
+
+    hr.div {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 14px 0
+    }
+
+    .info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--grey-l);
+      padding: 3px 0
+    }
+
+    .info .lbl {
+      color: var(--white)
+    }
+
+    .stk-title,
+    .foc-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--green);
+      margin: 14px 0 10px
+    }
+
+    .stk-row {
+      display: grid;
+      grid-template-columns: 78px 1fr;
+      gap: 4px;
+      font-size: 11px;
+      padding: 3px 0;
+      border-bottom: 1px solid #ffffff06
+    }
+
+    .stk-cat {
+      color: var(--cyan);
+      font-weight: 500
+    }
+
+    .stk-val {
+      color: var(--grey-l)
+    }
+
+    .stk-val em {
+      color: var(--yellow);
+      font-style: normal;
+      font-weight: 500
+    }
+
+    .foc-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--grey-l);
+      padding: 2px 0
+    }
+
+    .foc-arr {
+      color: var(--green-dim)
+    }
+
+    /* Right panel */
+    .card-r {
+      position: relative;
+      overflow: hidden;
+      min-height: 520px
+    }
+
+    .card-r img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center right;
+      display: block;
+      opacity: .92
+    }
+
+    .card-r-overlay {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 110px;
+      background: rgba(6, 10, 15, .86);
+      border-left: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      padding: 20px 14px;
+      gap: 6px;
+      font-size: 12px
+    }
+
+    .ov-tag {
+      color: var(--grey);
+      font-size: 11px
+    }
+
+    .ov-green {
+      color: var(--green)
+    }
+
+    .ov-item {
+      color: var(--grey-l);
+      line-height: 1.7
+    }
+
+    /* Bottom bar */
+    .term-bot {
+      background: var(--bg-term);
+      border-top: 1px solid var(--border);
+      padding: 13px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px
+    }
+
+    .term-bot .pr {
+      color: var(--green)
+    }
+
+    .gh-link {
+      color: var(--grey-l);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: color .2s;
+      font-size: 12px
+    }
+
+    .gh-link:hover {
+      color: var(--green)
+    }
+
+    /* Explore buttons */
+    .exp-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px
+    }
+
+    .btn {
+      background: var(--green-mut);
+      border: 1px solid var(--green-dim);
+      color: var(--green);
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 11px 24px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all .25s ease;
+      display: flex;
+      align-items: center;
+      gap: 7px
+    }
+
+    .btn:hover {
+      background: #00ff8818;
+      border-color: var(--green);
+      box-shadow: var(--glow-g);
+      transform: translateY(-2px)
+    }
+
+    .btn.red {
+      background: #9f123914;
+      border-color: #9f1239;
+      color: var(--red)
+    }
+
+    .btn.red:hover {
+      background: #e11d4818;
+      border-color: var(--red);
+      box-shadow: var(--glow-r)
+    }
+
+    /* ── SECTION 2: STACK ── */
+    .sec-wrap {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 72px 24px 56px
+    }
+
+    .sec-cmd {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--green);
+      margin-bottom: 32px
+    }
+
+    .sec-cmd .g {
+      color: var(--grey);
+      font-weight: 400
+    }
+
+    .focus-box {
+      background: var(--bg-term);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 40px
+    }
+
+    .focus-box pre {
+      padding: 24px 28px;
+      font-size: 12px;
+      line-height: 2;
+      color: var(--grey-l);
+      overflow-x: auto
+    }
+
+    .fk {
+      color: var(--cyan);
+      font-weight: 600;
+      display: inline-block;
+      min-width: 140px
+    }
+
+    .ft {
+      color: var(--green)
+    }
+
+    .fv {
+      color: var(--white)
+    }
+
+    .sg {
+      margin-bottom: 28px
+    }
+
+    .sg-title {
+      font-size: 11px;
+      color: var(--grey);
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px
+    }
+
+    .chip {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 7px 14px;
+      font-size: 11px;
+      color: var(--grey-l);
+      transition: all .2s ease;
+      cursor: default;
+      display: flex;
+      align-items: center;
+      gap: 5px
+    }
+
+    .chip:hover {
+      border-color: var(--green-dim);
+      color: var(--green);
+      background: var(--green-mut);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0, 255, 136, .08)
+    }
+
+    .chip .d {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--green-dim);
+      flex-shrink: 0
+    }
+
+    /* ── SECTION 3: STATS ── */
+    .stat-inner {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 72px 24px 56px
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px
+    }
+
+    .badges img {
+      height: 26px;
+      border-radius: 4px
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px
+    }
+
+    .stat-c {
+      background: var(--bg-term);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all .3s ease
+    }
+
+    .stat-c:hover {
+      border-color: var(--green-dim);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0, 255, 136, .06)
+    }
+
+    .stat-c img {
+      width: 100%;
+      display: block
+    }
+
+    .snake-box {
+      background: var(--bg-term);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      padding: 18px;
+      text-align: center;
+      margin-top: 36px
+    }
+
+    .snake-box img {
+      max-width: 100%;
+      filter: hue-rotate(0deg) saturate(1.2)
+    }
+
+    /* ── SECTION 4: CONTACT ── */
+    .con-inner {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 72px 24px 20px
+    }
+
+    .con-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 28px
+    }
+
+    .con-card {
+      background: var(--bg-term);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 26px 22px;
+      text-decoration: none;
+      color: var(--white);
+      transition: all .25s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .con-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--green);
+      transform: scaleX(0);
+      transition: transform .3s ease
+    }
+
+    .con-card:hover::before {
+      transform: scaleX(1)
+    }
+
+    .con-card:hover {
+      border-color: var(--green-dim);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(0, 255, 136, .07)
+    }
+
+    .con-icon {
+      font-size: 26px
+    }
+
+    .con-lbl {
+      font-size: 13px;
+      color: var(--green);
+      font-weight: 600
+    }
+
+    .con-val {
+      font-size: 11px;
+      color: var(--grey-l)
+    }
+
+    .footer {
+      padding: 32px 24px 20px;
+      text-align: center
+    }
+
+    .footer img {
+      width: 100%;
+      border-radius: 0 0 8px 8px;
+      margin-bottom: 14px
+    }
+
+    .footer-txt {
+      font-size: 12px;
+      color: var(--grey)
+    }
+
+    .footer-txt span {
+      color: var(--green)
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:720px) {
+      .whoami-card {
+        grid-template-columns: 1fr
+      }
+
+      .card-r {
+        height: 260px;
+        min-height: unset
+      }
+
+      h1.name {
+        font-size: 24px
+      }
+
+      .nav-dots {
+        display: none
+      }
+
+      .exp-row {
+        flex-direction: column;
+        align-items: center
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- BACK BUTTON -->
+  <button id="backBtn" onclick="goBack()">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="15,18 9,12 15,6" />
+    </svg>
+    $ cd ..
+  </button>
+
+  <!-- NAV DOTS -->
+  <nav class="nav-dots">
+    <div class="dot active" data-label="whoami" onclick="show('s1')"></div>
+    <div class="dot" data-label="stack" onclick="show('s2')"></div>
+    <div class="dot" data-label="stats" onclick="show('s3')"></div>
+    <div class="dot" data-label="contact" onclick="show('s4')"></div>
+  </nav>
+
+  <!-- ══════════════════════════════════════
+     S1 · WHOAMI
+══════════════════════════════════════ -->
+  <section id="s1" class="section active">
+    <div class="tbar">
+      <div class="tdots"><span class="dr"></span><span class="dy"></span><span class="dg"></span></div>
+      <div class="ttitle">omar@github:~$ whoami</div>
+    </div>
+
+    <div class="wrap">
+      <p class="cmd-line"><span class="u">omar</span>@<span class="h">github</span>:~$ whoami</p>
+
+      <div class="whoami-card">
+        <!-- LEFT INFO PANEL -->
+        <div class="card-l">
+          <div class="name-row">
+            <span class="arrow">&gt;</span>
+            <h1 class="name">Omar Jebbari</h1>
+          </div>
+          <p class="title">AI Engineer</p>
+          <p class="tagline">Building with data, models and agents.</p>
+          <span class="cursor"></span>
+
+          <hr class="div" />
+
+          <div class="info"><span>&#128205;</span><span class="lbl">Martil, Morocco</span></div>
+          <div class="info"><span>&#127891;</span><span class="lbl">ENSA T&eacute;touan &nbsp;|&nbsp; Univ. Abdelmalek
+              Essa&acirc;di</span></div>
+          <div class="info"><span>&lt;&gt;</span><span class="lbl">Big Data &amp; IA &nbsp;(Year 2)</span></div>
+
+          <p class="stk-title">Tech Stack</p>
+          <div class="stk-row"><span class="stk-cat">Python</span><span class="stk-val"><em>PyTorch</em> &middot;
+              TensorFlow &middot; Sklearn</span></div>
+          <div class="stk-row"><span class="stk-cat">Dev</span><span class="stk-val">JS/TS &middot; C &middot; Bash
+              &middot; LaTeX</span></div>
+          <div class="stk-row"><span class="stk-cat">Data</span><span class="stk-val"><em>Pandas</em> &middot; NumPy
+              &middot; Spark &middot; Power BI</span></div>
+          <div class="stk-row"><span class="stk-cat">DB</span><span class="stk-val">PostgreSQL &middot; MySQL &middot;
+              MongoDB &middot; SQLite</span></div>
+          <div class="stk-row"><span class="stk-cat">Tools</span><span class="stk-val">Linux &middot; Docker &middot;
+              Git &middot; VS Code</span></div>
+          <div class="stk-row"><span class="stk-cat">Frontend</span><span class="stk-val">React &middot; Next.js
+              &middot; Node.js &middot; HTML/CSS</span></div>
+
+          <p class="foc-title">Focus</p>
+          <div class="foc-item"><span class="foc-arr">[&gt;]</span> LLMs &amp; LangChain</div>
+          <div class="foc-item"><span class="foc-arr">[&gt;]</span> Agentic AI</div>
+          <div class="foc-item"><span class="foc-arr">[&gt;]</span> Data Engineering</div>
+          <div class="foc-item"><span class="foc-arr">[&gt;]</span> Big Data / Machine Learning</div>
+        </div>
+
+        <!-- RIGHT: PIXEL ART -->
+        <div class="card-r">
+          <img
+            src="whoami-card.png"
+            alt="Omar Jebbari pixel terminal artwork" />
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM BAR -->
+    <div class="term-bot">
+      <span class="pr">omar@github:~$ <span
+          style="display:inline-block;width:8px;height:14px;background:var(--green);vertical-align:middle;animation:blink 1s step-end infinite;"></span></span>
+      <a href="https://github.com/OmarJebbari" class="gh-link" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+        </svg>
+        github.com/OmarJebbari
+      </a>
+    </div>
+
+    <!-- EXPLORE BUTTONS -->
+    <div class="exp-row">
+      <button class="btn" onclick="show('s2')">&#36; cat ~/focus.txt</button>
+      <button class="btn" onclick="show('s3')">&#36; gh stats</button>
+      <button class="btn" onclick="show('s4')">&#36; ssh omar@contact</button>
+    </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+     S2 · STACK
+══════════════════════════════════════ -->
+  <section id="s2" class="section">
+    <div class="sec-wrap">
+      <p class="sec-cmd"><span class="g">$ </span>cat ~/focus.txt &amp;&amp; ls ~/stack</p>
+
+      <div class="focus-box">
+        <div class="tbar">
+          <div class="tdots"><span class="dr"></span><span class="dy"></span><span class="dg"></span></div>
+          <div class="ttitle">~/focus.txt</div>
+        </div>
+        <pre><span class="fk">ml_engineering  </span><span class="fv"><span class="ft">PyTorch</span> &middot; TensorFlow &middot; scikit-learn &middot; model training &amp; evaluation</span>
+<span class="fk">data_engineering</span><span class="fv"><span class="ft">Apache Spark</span> &middot; SQL &middot; Docker &middot; ETL pipelines &middot; PostgreSQL &middot; MongoDB</span>
+<span class="fk">ai_engineering  </span><span class="fv"><span class="ft">RAG</span> &middot; VLMs &middot; QLoRA &middot; BGE-M3 &middot; SigLIP &middot; Chroma &middot; Qdrant &middot; LangChain</span>
+<span class="fk">analytics       </span><span class="fv"><span class="ft">Pandas</span> &middot; NumPy &middot; Matplotlib &middot; Power BI</span></pre>
+      </div>
+
+      <div class="sg">
+        <p class="sg-title">// Languages</p>
+        <div class="chips">
+          <div class="chip"><span class="d"></span>Python</div>
+          <div class="chip"><span class="d"></span>SQL</div>
+          <div class="chip"><span class="d"></span>C</div>
+          <div class="chip"><span class="d"></span>Bash</div>
+          <div class="chip"><span class="d"></span>JavaScript</div>
+          <div class="chip"><span class="d"></span>TypeScript</div>
+          <div class="chip"><span class="d"></span>LaTeX</div>
+        </div>
+      </div>
+      <div class="sg">
+        <p class="sg-title">// AI &amp; ML</p>
+        <div class="chips">
+          <div class="chip"><span class="d"></span>PyTorch</div>
+          <div class="chip"><span class="d"></span>TensorFlow</div>
+          <div class="chip"><span class="d"></span>scikit-learn</div>
+          <div class="chip"><span class="d"></span>LangChain</div>
+          <div class="chip"><span class="d"></span>RAG</div>
+          <div class="chip"><span class="d"></span>QLoRA</div>
+          <div class="chip"><span class="d"></span>VLMs</div>
+          <div class="chip"><span class="d"></span>BGE-M3</div>
+          <div class="chip"><span class="d"></span>SigLIP</div>
+          <div class="chip"><span class="d"></span>Chroma</div>
+          <div class="chip"><span class="d"></span>Qdrant</div>
+        </div>
+      </div>
+      <div class="sg">
+        <p class="sg-title">// Data &amp; Analytics</p>
+        <div class="chips">
+          <div class="chip"><span class="d"></span>Apache Spark</div>
+          <div class="chip"><span class="d"></span>Pandas</div>
+          <div class="chip"><span class="d"></span>NumPy</div>
+          <div class="chip"><span class="d"></span>Matplotlib</div>
+          <div class="chip"><span class="d"></span>Power BI</div>
+        </div>
+      </div>
+      <div class="sg">
+        <p class="sg-title">// Databases</p>
+        <div class="chips">
+          <div class="chip"><span class="d"></span>PostgreSQL</div>
+          <div class="chip"><span class="d"></span>MySQL</div>
+          <div class="chip"><span class="d"></span>MongoDB</div>
+          <div class="chip"><span class="d"></span>SQLite</div>
+        </div>
+      </div>
+      <div class="sg">
+        <p class="sg-title">// Web &amp; DevOps</p>
+        <div class="chips">
+          <div class="chip"><span class="d"></span>React</div>
+          <div class="chip"><span class="d"></span>Next.js</div>
+          <div class="chip"><span class="d"></span>Node.js</div>
+          <div class="chip"><span class="d"></span>Docker</div>
+          <div class="chip"><span class="d"></span>Git</div>
+          <div class="chip"><span class="d"></span>Linux</div>
+          <div class="chip"><span class="d"></span>Vercel</div>
+        </div>
+      </div>
+
+      <div style="display:flex;justify-content:center;margin-top:20px;">
+        <button class="btn" onclick="show('s3')">&#36; gh stats</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+     S3 · STATS
+══════════════════════════════════════ -->
+  <section id="s3" class="section">
+    <div class="stat-inner">
+      <p class="sec-cmd"><span class="g">$ </span>gh api /users/OmarJebbari/stats</p>
+
+      <div class="badges">
+        <img src="https://komarev.com/ghpvc/?username=OmarJebbari&label=PROFILE+VIEWS&color=00ff88&style=for-the-badge"
+          alt="views" />
+        <img
+          src="https://img.shields.io/github/followers/OmarJebbari?style=for-the-badge&color=00ff88&labelColor=0d1117&logo=github&logoColor=white"
+          alt="followers" />
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-c">
+          <img
+            src="https://github-readme-stats.vercel.app/api?username=OmarJebbari&show_icons=true&theme=transparent&hide_border=true&title_color=00ff88&icon_color=00ff88&text_color=94a3b8&bg_color=0d1117"
+            alt="GitHub Stats" loading="lazy" />
+        </div>
+        <div class="stat-c">
+          <img
+            src="https://github-readme-stats.vercel.app/api/top-langs/?username=OmarJebbari&layout=compact&theme=transparent&hide_border=true&title_color=00ff88&text_color=94a3b8&bg_color=0d1117&langs_count=8"
+            alt="Top Languages" loading="lazy" />
+        </div>
+        <div class="stat-c" style="grid-column:1/-1;">
+          <img
+            src="https://github-readme-streak-stats.herokuapp.com/?user=OmarJebbari&theme=dark&hide_border=true&ring=00ff88&fire=e11d48&currStreakLabel=00ff88&sideLabels=94a3b8&background=0d1117&stroke=1e2d40&dates=64748b"
+            alt="Streak" loading="lazy" style="max-width:580px;display:block;margin:0 auto;" />
+        </div>
+      </div>
+
+      <p class="sec-cmd" style="margin-top:40px;font-size:16px;"><span class="g">$ </span>./snake --eat contributions
+      </p>
+      <div class="snake-box">
+        <img src="https://raw.githubusercontent.com/OmarJebbari/OmarJebbari/output/snake.svg" alt="contribution snake"
+          loading="lazy" />
+      </div>
+
+      <div style="display:flex;justify-content:center;margin-top:24px;">
+        <button class="btn" onclick="show('s4')">&#36; ssh omar@contact</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+     S4 · CONTACT
+══════════════════════════════════════ -->
+  <section id="s4" class="section">
+    <div class="con-inner">
+      <p class="sec-cmd"><span class="g">$ </span>ssh omar@contact</p>
+
+      <div class="con-grid">
+        <a href="https://www.linkedin.com/in/omar-jebbari-00b30b269/" class="con-card" target="_blank" rel="noopener"
+          id="linkedin-link">
+          <span class="con-icon">&#128188;</span>
+          <span class="con-lbl">LinkedIn</span>
+          <span class="con-val">omar-jebbari-00b30b269</span>
+        </a>
+        <a href="mailto:jebbariomar1@gmail.com" class="con-card" id="gmail-link">
+          <span class="con-icon">&#128231;</span>
+          <span class="con-lbl">Gmail</span>
+          <span class="con-val">jebbariomar1@gmail.com</span>
+        </a>
+        <a href="https://github.com/OmarJebbari" class="con-card" target="_blank" rel="noopener"
+          id="github-contact-link">
+          <span class="con-icon">&#128025;</span>
+          <span class="con-lbl">GitHub</span>
+          <span class="con-val">OmarJebbari</span>
+        </a>
+      </div>
+
+      <div class="focus-box" style="margin-top:36px;">
+        <div class="tbar">
+          <div class="tdots"><span class="dr"></span><span class="dy"></span><span class="dg"></span></div>
+          <div class="ttitle">ssh session &mdash; open to</div>
+        </div>
+        <pre style="padding:24px 28px;font-size:12px;line-height:2;color:var(--grey-l);">
+<span style="color:var(--green)">omar@contact:~$</span> echo "Open to:"
+<span style="color:var(--white)">  &rarr; Internships in AI / Data Engineering</span>
+<span style="color:var(--white)">  &rarr; Research collaborations on LLMs &amp; RAG</span>
+<span style="color:var(--white)">  &rarr; Open source contributions</span>
+<span style="color:var(--white)">  &rarr; Building cool stuff together</span>
+<span style="color:var(--green)">omar@contact:~$</span> <span style="display:inline-block;width:8px;height:14px;background:var(--green);vertical-align:middle;animation:blink 1s step-end infinite;"></span></pre>
+      </div>
+
+      <div class="footer">
+        <img
+          src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:00ff8826,100:0d1117&height=72&section=footer"
+          alt="" loading="lazy" />
+        <p class="footer-txt">Built with &#128154; by <span>OmarJebbari</span> &middot; Terminal aesthetics</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+     JS
+══════════════════════════════════════ -->
+  <script>
+    const SECTIONS = ['s1', 's2', 's3', 's4'];
+    const hist = ['s1'];
+
+    function show(id) {
+      const cur = document.querySelector('.section.active');
+      if (cur && cur.id === id) return;
+      if (cur) hist.push(id);
+
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+
+      document.getElementById(id).classList.add('active');
+      const i = SECTIONS.indexOf(id);
+      if (i !== -1) document.querySelectorAll('.dot')[i].classList.add('active');
+
+      document.getElementById('backBtn').classList.toggle('visible', id !== 's1');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goBack() {
+      if (hist.length <= 1) { show('s1'); return; }
+      hist.pop();
+      const prev = hist[hist.length - 1];
+      // don't push again
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+      document.getElementById(prev).classList.add('active');
+      const i = SECTIONS.indexOf(prev);
+      if (i !== -1) document.querySelectorAll('.dot')[i].classList.add('active');
+      document.getElementById('backBtn').classList.toggle('visible', prev !== 's1');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.addEventListener('keydown', e => {
+      const cur = document.querySelector('.section.active');
+      const idx = SECTIONS.indexOf(cur?.id);
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { if (idx < SECTIONS.length - 1) show(SECTIONS[idx + 1]); }
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { if (idx > 0) show(SECTIONS[idx - 1]); }
+      if (e.key === 'Escape' || e.key === 'Backspace') { goBack(); }
+    });
+  </script>
+</body>
+
+</html>
